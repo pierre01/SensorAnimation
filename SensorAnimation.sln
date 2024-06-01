@@ -1,0 +1,26 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.34929.205
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SensorAnimation", "SensorAnimation\SensorAnimation.csproj", "{DA4D71EB-D719-43AA-9EE4-9DCFE3F245F5}"
+EndProject
+Global
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8F19F904-18C1-4615-9DED-3EF5E030ACF8}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA4D71EB-D719-43AA-9EE4-9DCFE3F245F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA4D71EB-D719-43AA-9EE4-9DCFE3F245F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA4D71EB-D719-43AA-9EE4-9DCFE3F245F5}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{DA4D71EB-D719-43AA-9EE4-9DCFE3F245F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA4D71EB-D719-43AA-9EE4-9DCFE3F245F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA4D71EB-D719-43AA-9EE4-9DCFE3F245F5}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
