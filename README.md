@@ -1,6 +1,7 @@
 # Leveler Pro 
 a very exaggerated name for a simple app that took me a few hours to make.
 I was thinking of renaming it Leveler Pro 3000 Ultimate Edition what do you think?
+## This app uses no external libraries, only the Maui API.
 
 This Maui app demonstrates how to animate data from a sensor in a Maui app. 
 This example shows how to use the accelerometer sensor to create a Leveler
@@ -12,9 +13,13 @@ In Landscape mode it animates a bubble to indicate the flatness of the surface t
 
 In Portrait mode it will change to display a plumb aligner to check if the device is vertically aligned.
 
-## This app uses no external libraries, only the Maui API.
-
-
+## This will help you learn:
+- Using the Accelerometer sensor
+- Using Animations
+- Detecting orientation changes
+- Transitioning between 2 different UIs for landscape and portrait mode
+- Using the AbsoluteLayout control to position elements in different form factors UIs
+	
 
 https://github.com/pierre01/SensorAnimation/assets/2603287/1ca053cc-87c6-4570-be7d-1a10dc208d76
 
