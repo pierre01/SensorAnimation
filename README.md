@@ -14,3 +14,11 @@ In Portrait mode it will change to display a plumb aligner to check if the devic
 
 ## This app uses no external libraries, only the Maui API.
 
+
+
+https://github.com/pierre01/SensorAnimation/assets/2603287/1ca053cc-87c6-4570-be7d-1a10dc208d76
+
+
+
+https://github.com/pierre01/SensorAnimation/assets/2603287/67e92575-d50d-4700-b5f4-f2e2c78d8e1d
+
