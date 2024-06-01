@@ -6,7 +6,7 @@ This Maui app demonstrates how to animate data from a sensor in a Maui app.
 This example shows how to use the accelerometer sensor to create a Leveler
 app 
 
-The App also detects when the phone orientation changes 
+The App also detects when the phone orientation changes and displays 2 different UI depending on the orientation.
 
 In Landscape mode it animates a bubble to indicate the flatness of the surface the device lays on. 
 
