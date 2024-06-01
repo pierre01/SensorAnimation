@@ -2,17 +2,15 @@
 
 public partial class MainPage : ContentPage
 {
-
-
-    PeriodicTimer _clock;
+    private PeriodicTimer _clock;
 
     private double _pitch;
     private double _roll;
+    private double _lastAngle;
 
     private DisplayOrientation _currentOrientation;
 
     private SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);
-
 
     public MainPage()
     {
@@ -21,24 +19,40 @@ public partial class MainPage : ContentPage
         ToggleAccelerometer();
         _currentOrientation = DeviceDisplay.MainDisplayInfo.Orientation;
         DeviceDisplay.MainDisplayInfoChanged += DeviceDisplayOnMainDisplayInfoChanged;
+        AngleShiftLabel.Text = $"Angle: 0.00°";
     }
 
-    private void DeviceDisplayOnMainDisplayInfoChanged(object? sender, DisplayInfoChangedEventArgs e)
+    /// <summary>
+    /// Change the UI based on the orientation of the device
+    /// </summary>
+    /// <remarks>
+    /// The Way you hold your device has an effect on how the orientation change 
+    /// - This is done to avoid unwanted flips when the device is flat on a table or close to a vertical position
+    /// Because the calculation is based on the value of the 3 axis values, 
+    /// the device must be held in a way that the z-axis is pointing slightly towards the ground
+    /// </remarks>
+    private async void DeviceDisplayOnMainDisplayInfoChanged(object? sender, DisplayInfoChangedEventArgs e)
     {
         if (_currentOrientation == e.DisplayInfo.Orientation) return;
 
         _currentOrientation = e.DisplayInfo.Orientation;
-        // Animate between landscape and portrait
-        switch (_currentOrientation)
+        // Animate between landscape and portrait visuals
+        if (_currentOrientation == DisplayOrientation.Landscape)
         {
-            case DisplayOrientation.Landscape:
-                // Fade out the plumb line
-                PlumbLine.FadeTo(0, 300, Easing.CubicInOut);
-                // Fade out the Reference Line
-                ReferenceLine.FadeTo(0, 300, Easing.CubicInOut);
-                break;
-            case DisplayOrientation.Portrait:
-                break;
+            //Await for all animations to complete
+            await Task.WhenAll(
+                PlumbLine.FadeTo(0, 600, Easing.CubicInOut),
+                ReferenceLine.FadeTo(0, 600, Easing.CubicInOut),
+                HorizontalSpiritGrid.FadeTo(1, 600, Easing.CubicInOut)
+            );
+        }
+        else if (_currentOrientation == DisplayOrientation.Portrait)
+        {
+            await Task.WhenAll(
+                PlumbLine.FadeTo(1, 600, Easing.CubicInOut),
+                ReferenceLine.FadeTo(1, 600, Easing.CubicInOut),
+                HorizontalSpiritGrid.FadeTo(0, 600, Easing.CubicInOut)
+            );
         }
     }
 
@@ -61,11 +75,9 @@ public partial class MainPage : ContentPage
         }
     }
 
-
     private async void Accelerometer_ReadingChanged(object sender, AccelerometerChangedEventArgs e)
     {
         // use semaphore to prevent multiple threads from accessing the same resource
-        if (_isAnimating) return;
         await _semaphore.WaitAsync();
         try
         {
@@ -81,19 +93,11 @@ public partial class MainPage : ContentPage
         {
             _semaphore.Release();
         }
-
-
     }
-    private double _lastAngle;
-    private async void AnimatePlumbLine()
+
+    private async void AnimatePlumbOrBubble()
     {
-
-        if (_clock == null)
-        {
-            _clock = new PeriodicTimer(TimeSpan.FromMilliseconds(100));
-        }
-
-        base.OnAppearing();
+        _clock = new PeriodicTimer(TimeSpan.FromMilliseconds(200));
 
         while (await _clock.WaitForNextTickAsync())
         {
@@ -107,36 +111,39 @@ public partial class MainPage : ContentPage
                     {
                         _lastAngle = angleInDegrees;
                         AngleShiftLabel.Text = $"Angle: {-angleInDegrees:F2}°";
-                        await PlumbLine.RotateTo(angleInDegrees, 100, Easing.CubicInOut);
+                        await PlumbLine.RotateTo(angleInDegrees, 200, Easing.CubicInOut);
                     }
                 }
                 else
                 {
-                    //Do the bubble thing
-                    //await PlumbLine.RotateTo(_pitch * 180 / Math.PI, 50, Easing.SpringOut);
+                    var angleInDegrees = -(_roll * 180 / Math.PI);
+                    if (Math.Abs(angleInDegrees - _lastAngle) > 1)
+                    {
+                        _lastAngle = angleInDegrees;
+                        AngleShiftLabel.Text = $"Angle: {angleInDegrees:F2}°";
+                        //Move the bubble image based on the angle
+                        await BubbleImage.TranslateTo((float)(angleInDegrees * 2.5), 0, 200, Easing.CubicOut);
+                    }
                 }
             }
             finally
             {
                 _semaphore.Release();
             }
-        }                // Rotate the plumb line based on the pitch and roll angles
-
-
+        }
     }
 
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        AnimatePlumbLine();
+        AnimatePlumbOrBubble();
     }
 
     protected override void OnDisappearing()
     {
         base.OnDisappearing();
         ToggleAccelerometer();
-
         DeviceDisplay.MainDisplayInfoChanged -= DeviceDisplayOnMainDisplayInfoChanged;
-
+        _clock?.Dispose();
     }
 }

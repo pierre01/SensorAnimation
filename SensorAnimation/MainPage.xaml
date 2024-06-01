@@ -1,24 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage 
-    x:Class="SensorAnimation.MainPage" 
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-
-    <!--  Demo Zindex  -->
+<ContentPage x:Class="SensorAnimation.MainPage" xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <AbsoluteLayout>
-        <BoxView AbsoluteLayout.LayoutBounds="0,0,100,25" AbsoluteLayout.LayoutFlags="PositionProportional" Color="#252526" />
-        <Label x:Name="AngleShiftLabel" AbsoluteLayout.LayoutBounds="0.1,0,110,25" AbsoluteLayout.LayoutFlags="PositionProportional" TextColor="White" />
-        <BoxView AbsoluteLayout.LayoutBounds="0,0.5,25,100" AbsoluteLayout.LayoutFlags="PositionProportional" Color="Green" />
-        <BoxView x:Name="ReferenceLine" AbsoluteLayout.LayoutBounds="0.5,1,2,1" AbsoluteLayout.LayoutFlags="HeightProportional,XProportional,YProportional" Color="Gray" />
-        <Grid x:Name="PlumbLine"
-            AbsoluteLayout.LayoutBounds="0.5,3,100,800"
+        <Grid
+            x:Name="HorizontalSpiritGrid"
+            AbsoluteLayout.LayoutBounds="0.5,0.2,250,50"
             AbsoluteLayout.LayoutFlags="PositionProportional"
-             RowDefinitions="4*,3*,1*">
-            <BoxView Grid.Row="1" Color="Purple" WidthRequest="2" />
-            <Image Grid.Row="2" VerticalOptions="Start" Source="plumbbob.png" />        
+            BackgroundColor="#264655" Opacity="0">
+            <Image
+                x:Name="BubbleImage" Margin="0,0,0,16"
+                HorizontalOptions="Center" Source="bubble2.png"
+                VerticalOptions="Start" />
         </Grid>
-        <BoxView AbsoluteLayout.LayoutBounds="1,0.5,25,100" AbsoluteLayout.LayoutFlags="PositionProportional" Color="Red" />
-
+        <BoxView AbsoluteLayout.LayoutBounds="0,0,100,32" AbsoluteLayout.LayoutFlags="PositionProportional" Color="#252526" />
+        <Label
+            x:Name="AngleShiftLabel"
+            Margin="8,4,0,0"
+            AbsoluteLayout.LayoutBounds="0,0,110,25"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            TextColor="White" />
+        <BoxView
+            x:Name="ReferenceLine"
+            AbsoluteLayout.LayoutBounds="0.5,1,2,1"
+            AbsoluteLayout.LayoutFlags="HeightProportional,XProportional,YProportional"
+            Color="Gray" />
+        <Grid
+            x:Name="PlumbLine"
+            AbsoluteLayout.LayoutBounds="0.5,0,100,1"
+            AbsoluteLayout.LayoutFlags="HeightProportional,XProportional,YProportional"
+            AnchorX="0.5" AnchorY="0"
+            RowDefinitions="3*,1*">
+            <BoxView Grid.Row="0" WidthRequest="2" Color="Purple" />
+            <Image Grid.Row="1" Source="plumbbob.png" VerticalOptions="Start" />
+        </Grid>
     </AbsoluteLayout>
-
 </ContentPage>
