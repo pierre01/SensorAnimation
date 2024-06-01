@@ -9,7 +9,7 @@
         <BoxView AbsoluteLayout.LayoutBounds="0,0,100,25" AbsoluteLayout.LayoutFlags="PositionProportional" Color="#252526" />
         <Label x:Name="AngleShiftLabel" AbsoluteLayout.LayoutBounds="0.1,0,110,25" AbsoluteLayout.LayoutFlags="PositionProportional" TextColor="White" />
         <BoxView AbsoluteLayout.LayoutBounds="0,0.5,25,100" AbsoluteLayout.LayoutFlags="PositionProportional" Color="Green" />
-        <BoxView AbsoluteLayout.LayoutBounds="0.5,1,2,1" AbsoluteLayout.LayoutFlags="HeightProportional,XProportional,YProportional" Color="Gray" />
+        <BoxView x:Name="ReferenceLine" AbsoluteLayout.LayoutBounds="0.5,1,2,1" AbsoluteLayout.LayoutFlags="HeightProportional,XProportional,YProportional" Color="Gray" />
         <Grid x:Name="PlumbLine"
             AbsoluteLayout.LayoutBounds="0.5,3,100,800"
             AbsoluteLayout.LayoutFlags="PositionProportional"

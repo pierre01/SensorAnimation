@@ -3,16 +3,11 @@
 public partial class MainPage : ContentPage
 {
 
-    private double _xAccell;
-    private double _yAccell;
-    private double _zAccell;
 
     PeriodicTimer _clock;
 
     private double _pitch;
     private double _roll;
-
-    private bool _isAnimating;
 
     private DisplayOrientation _currentOrientation;
 
@@ -37,10 +32,12 @@ public partial class MainPage : ContentPage
         switch (_currentOrientation)
         {
             case DisplayOrientation.Landscape:
-                _isAnimating = true;
+                // Fade out the plumb line
+                PlumbLine.FadeTo(0, 300, Easing.CubicInOut);
+                // Fade out the Reference Line
+                ReferenceLine.FadeTo(0, 300, Easing.CubicInOut);
                 break;
             case DisplayOrientation.Portrait:
-                _isAnimating = false;
                 break;
         }
     }
@@ -72,12 +69,12 @@ public partial class MainPage : ContentPage
         await _semaphore.WaitAsync();
         try
         {
-            _xAccell = e.Reading.Acceleration.X;
-            _yAccell = e.Reading.Acceleration.Y;
-            _zAccell = e.Reading.Acceleration.Z;
+            var xAccell = e.Reading.Acceleration.X;
+            var yAccell = e.Reading.Acceleration.Y;
+            var zAccell = e.Reading.Acceleration.Z;
             //Calculate the tilt angle (pitch or roll) based on the accelerometer readings.
-            _pitch = Math.Atan2(_xAccell, Math.Sqrt(_yAccell * _yAccell + _zAccell * _zAccell));
-            _roll = Math.Atan2(_yAccell, Math.Sqrt(_xAccell * _xAccell + _zAccell * _zAccell));
+            _pitch = Math.Atan2(xAccell, Math.Sqrt(yAccell * yAccell + zAccell * zAccell));
+            _roll = Math.Atan2(yAccell, Math.Sqrt(xAccell * xAccell + zAccell * zAccell));
 
         }
         finally
