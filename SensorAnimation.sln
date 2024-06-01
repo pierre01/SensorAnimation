@@ -4,6 +4,12 @@ VisualStudioVersion = 17.11.34929.205
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SensorAnimation", "SensorAnimation\SensorAnimation.csproj", "{DA4D71EB-D719-43AA-9EE4-9DCFE3F245F5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{E38D676A-A0A1-4374-9C48-7059FDBBD015}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8F19F904-18C1-4615-9DED-3EF5E030ACF8}
