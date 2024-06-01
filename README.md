@@ -12,6 +12,9 @@ The App also detects when the phone orientation changes and displays 2 different
 In Landscape mode it animates a bubble to indicate the flatness of the surface the device lays on. 
 
 In Portrait mode it will change to display a plumb aligner to check if the device is vertically aligned.
+https://github.com/pierre01/SensorAnimation/assets/2603287/1ca053cc-87c6-4570-be7d-1a10dc208d76
+
+https://github.com/pierre01/SensorAnimation/assets/2603287/67e92575-d50d-4700-b5f4-f2e2c78d8e1d
 
 ## This will help you learn:
 - Using the Accelerometer sensor
@@ -19,11 +22,8 @@ In Portrait mode it will change to display a plumb aligner to check if the devic
 - Detecting orientation changes
 - Transitioning between 2 different UIs for landscape and portrait mode
 - Using the AbsoluteLayout control to position elements in different form factors UIs
-	
 
-https://github.com/pierre01/SensorAnimation/assets/2603287/1ca053cc-87c6-4570-be7d-1a10dc208d76
+## A new word for you to Learn: Skeuomorphism 
+A digital design style that mimics physical objects, aiming to simplify usability and enhance familiarity in user interfaces.
 
-
-
-https://github.com/pierre01/SensorAnimation/assets/2603287/67e92575-d50d-4700-b5f4-f2e2c78d8e1d
 
