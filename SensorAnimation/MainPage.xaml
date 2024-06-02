@@ -5,16 +5,17 @@
             x:Name="HorizontalSpiritGrid"
             AbsoluteLayout.LayoutBounds="0.5,0.2,250,50"
             AbsoluteLayout.LayoutFlags="PositionProportional"
-            BackgroundColor="#264655" Opacity="0">
+            Opacity="0">
+            <Image Source="bottomcapsule.png" />
             <Image
-                x:Name="BubbleImage" Margin="0,0,0,16"
-                HorizontalOptions="Center" Source="bubble2.png"
+                x:Name="BubbleImage" Margin="0,4,0,4"
+                HorizontalOptions="Center" Source="bubblemain.png"
                 VerticalOptions="Start" />
+            <Image Source="topcapsule.png" />
         </Grid>
         <BoxView AbsoluteLayout.LayoutBounds="0,0,100,32" AbsoluteLayout.LayoutFlags="PositionProportional" Color="#252526" />
         <Label
-            x:Name="AngleShiftLabel"
-            Margin="8,4,0,0"
+            x:Name="AngleShiftLabel" Margin="8,4,0,0"
             AbsoluteLayout.LayoutBounds="0,0,110,25"
             AbsoluteLayout.LayoutFlags="PositionProportional"
             TextColor="White" />
