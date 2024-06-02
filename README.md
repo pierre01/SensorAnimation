@@ -15,7 +15,8 @@ The App also detects when the phone orientation changes and displays 2 different
 
 https://github.com/pierre01/SensorAnimation/assets/2603287/1ca053cc-87c6-4570-be7d-1a10dc208d76
 
-https://github.com/pierre01/SensorAnimation/assets/2603287/67e92575-d50d-4700-b5f4-f2e2c78d8e1d
+https://github.com/pierre01/SensorAnimation/assets/2603287/faa4459f-3592-4e18-baf3-14ad6026430e
+
 
 ## This will help you learn:
 - Using the Accelerometer sensor
