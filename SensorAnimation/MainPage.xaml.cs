@@ -2,6 +2,13 @@
 
 public partial class MainPage : ContentPage
 {
+
+    /// <summary>
+    /// The maximum angle the level can swing before being considered immobile
+    /// Basically, this is used to stabilize the level when the device is not moving
+    /// </summary>
+    private const double maxSwingAngle = 0.25;
+
     private PeriodicTimer _clock;
 
     private double _pitch;
@@ -64,7 +71,7 @@ public partial class MainPage : ContentPage
             {
                 // Turn on accelerometer
                 Accelerometer.Default.ReadingChanged += Accelerometer_ReadingChanged;
-                Accelerometer.Default.Start(SensorSpeed.UI);
+                Accelerometer.Default.Start(SensorSpeed.Default);
             }
             else
             {
@@ -97,7 +104,7 @@ public partial class MainPage : ContentPage
 
     private async void AnimatePlumbOrBubble()
     {
-        _clock = new PeriodicTimer(TimeSpan.FromMilliseconds(200));
+        _clock = new PeriodicTimer(TimeSpan.FromMilliseconds(150));
 
         while (await _clock.WaitForNextTickAsync())
         {
@@ -107,22 +114,22 @@ public partial class MainPage : ContentPage
                 if (_currentOrientation == DisplayOrientation.Portrait)
                 {
                     var angleInDegrees = _pitch * 180 / Math.PI;
-                    if (Math.Abs(angleInDegrees - _lastAngle) > 1)
+                    if (Math.Abs(angleInDegrees - _lastAngle) > maxSwingAngle)
                     {
                         _lastAngle = angleInDegrees;
                         AngleShiftLabel.Text = $"Angle: {-angleInDegrees:F2}°";
-                        await PlumbLine.RotateTo(angleInDegrees, 200, Easing.CubicInOut);
+                        await PlumbLine.RotateTo(angleInDegrees, 100, Easing.CubicOut);
                     }
                 }
                 else
                 {
                     var angleInDegrees = -(_roll * 180 / Math.PI);
-                    if (Math.Abs(angleInDegrees - _lastAngle) > 1)
+                    if (Math.Abs(angleInDegrees - _lastAngle) > maxSwingAngle)
                     {
                         _lastAngle = angleInDegrees;
                         AngleShiftLabel.Text = $"Angle: {angleInDegrees:F2}°";
                         //Move the bubble image based on the angle
-                        await BubbleImage.TranslateTo((float)(angleInDegrees * 2.5), 0, 200, Easing.CubicOut);
+                        await BubbleImage.TranslateTo(angleInDegrees * 2.5, 0, 100, Easing.CubicOut);
                     }
                 }
             }
