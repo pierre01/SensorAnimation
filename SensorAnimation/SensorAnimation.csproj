@@ -60,10 +60,7 @@
 	  <MauiImage Remove="Resources\Images\BubbleVial.ai" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <None Remove="Resources\Images\bubble2.png" />
-	  <None Remove="Resources\Images\PlumbBob.png" />
-	</ItemGroup>
+
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.40" />
