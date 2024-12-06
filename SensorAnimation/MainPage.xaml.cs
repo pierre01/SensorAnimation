@@ -1,4 +1,5 @@
-﻿namespace SensorAnimation;
+﻿using Microsoft.Maui.Devices;
+namespace SensorAnimation;
 
 public partial class MainPage : ContentPage
 {

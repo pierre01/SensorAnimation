@@ -11,8 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{E3
 	EndProjectSection
 EndProject
 Global
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8F19F904-18C1-4615-9DED-3EF5E030ACF8}
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{DA4D71EB-D719-43AA-9EE4-9DCFE3F245F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -22,11 +23,10 @@ Global
 		{DA4D71EB-D719-43AA-9EE4-9DCFE3F245F5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DA4D71EB-D719-43AA-9EE4-9DCFE3F245F5}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8F19F904-18C1-4615-9DED-3EF5E030ACF8}
 	EndGlobalSection
 EndGlobal

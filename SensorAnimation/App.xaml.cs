@@ -1,12 +1,18 @@
-﻿namespace SensorAnimation
-{
-    public partial class App : Application
-    {
-        public App()
-        {
-            InitializeComponent();
+﻿namespace SensorAnimation;
 
-            MainPage = new AppShell();
-        }
+public partial class App : Application
+{
+    public App()
+    {
+        InitializeComponent();
+
+    }
+
+    protected override Window CreateWindow(IActivationState activationState)
+    {
+
+        //app.Services
+        return new Window(new AppShell());
+        // return 
     }
 }
